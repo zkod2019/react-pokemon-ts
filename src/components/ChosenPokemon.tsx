@@ -19,14 +19,12 @@ function PokeViewer({name}:IPokemonProps) {
             setPokemon(pokemonName)
           }) // add catch later 
       };
-    //
     useEffect(()=>{
       fetchUserData()
     },[name])
     
-if (!pokemonName) return<div>no pokemon with that name</div>
+if (!pokemonName) return<div className="items-center text-center p-8 uppercase text-white font-bold text-2xl">no pokemon with that name</div>
 
-//class="w-24 h-24 md:w-48 md:h-auto md:rounded-none rounded-full mx-auto" src="/sarah-dayan.jpg" alt="" width="384" height="512"
 return (
   <div className = "relative"> 
     <div className="flex flex-col">
@@ -42,7 +40,7 @@ return (
         <p className="w-full">Abilities: {pokemonName.abilities.map((abilities) => abilities.ability.name).join(", ")}</p>
         <p className="w-full">Stats: {pokemonName.stats.map((stats) => stats.base_stat).join(", ")}</p>
       </div>
-      <p className="flex flex-col items-center text-justify hover:border-4 hover:border-purple-600 hover:bg-pink-300 p-3 rounded-md text-base/7 hover:text-purple-900">Moves: {pokemonName.moves.map((moves) => moves.move.name).join(", ")}</p>
+      <p className="flex flex-col items-end right-0 text-justify hover:border-4 hover:border-purple-600 hover:bg-pink-300 p-3 rounded-md text-base/7 hover:text-purple-900">Moves: {pokemonName.moves.map((moves) => moves.move.name).join(", ")}</p>
     </div>
     
   </div>
