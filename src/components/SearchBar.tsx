@@ -13,10 +13,10 @@ const SearchBar = ({searchInput,setSearchInput}:ISearchBarProps) => {
   };
   
   return (
-    <div>
-        <label className="text-xs font-semibold inline-block py-3 px-4 text-transform=uppercase rounded text-pink-600 bg-pink-200 uppercase last:mr-0 mr-1">
+    <div className="flex items-center justify-center">
+        <label className="text-center padding: 2em text-2xl font-semibold inline-block py-7 px-8 text-transform=uppercase rounded text-pink-600 bg-pink-200 uppercase last:mr-0 mr-1 ">
             Choose Your Pokemon: 
-            <div className="py-3 px-4 ">
+            <div className="py-6 px-9 ">
             <input type="text" name="searchInput" value={searchInput}  onChange={handleChange} className="text-center"/>
             </div>
         </label>
