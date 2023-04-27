@@ -6,6 +6,7 @@ export interface IPokemonProps{
 }
 
 function PokeViewer({name}:IPokemonProps) {
+  const [isBlur,setIsBlur] = useState(false)
     const [pokemonName, setPokemon] = useState<Pokemon|null>(null) // render it
     const fetchUserData = () => {
         if (name == ""){
@@ -24,14 +25,14 @@ function PokeViewer({name}:IPokemonProps) {
     },[name])
     
 if (!pokemonName) return<div className="items-center text-center p-8 uppercase text-white font-bold text-2xl">no pokemon with that name</div>
-
+//max-w-full and . h-auto classes to make a image responsive.
 return (
   <div className = "relative"> 
-    <div className="flex flex-col">
+    <div className={`flex flex-col`}>
         <h2 className="items-center justify-center py-6 text-center text-2xl font-semibold uppercase text-white">{pokemonName.name}</h2>
         <img className="items-right w-50 h-50 md:h-auto md:rounded-none rounded-full mx-auto" src={pokemonName.sprites.front_default} alt={`${pokemonName.name} sprite` }/>
     </div>
-    <div className="flex flex-row items-start gap-8 bg-blue-300 p-5 bg-opacity-50 rounded-md text-white">
+    <div className={`flex flex-row items-start gap-8 bg-blue-300 p-5 bg-opacity-50 rounded-md text-white`}>
       <div className="text-center flex flex-col items-start hover:border-4 hover:border-purple-600 hover:bg-pink-300 p-3 rounded-md text-base/7 hover:text-purple-900">
         <p className="w-full">Type: {pokemonName.types.map((type) => type.type.name).join(", ")}</p>
         <p className="w-full">Height: {pokemonName.height}</p>
@@ -40,7 +41,7 @@ return (
         <p className="w-full">Abilities: {pokemonName.abilities.map((abilities) => abilities.ability.name).join(", ")}</p>
         <p className="w-full">Stats: {pokemonName.stats.map((stats) => stats.base_stat).join(", ")}</p>
       </div>
-      <p className="flex flex-col items-end right-0 text-justify hover:border-4 hover:border-purple-600 hover:bg-pink-300 p-3 rounded-md text-base/7 hover:text-purple-900">Moves: {pokemonName.moves.map((moves) => moves.move.name).join(", ")}</p>
+      <p className="flex flex-col items-end right-0 text-justify hover:border-4 hover:border-purple-600 hover:bg-pink-300 p-3 rounded-md text-base/7 hover:text-purple-900 hover:backdrop-blur">Moves: {pokemonName.moves.map((moves) => moves.move.name).join(", ")}</p>
     </div>
     
   </div>
